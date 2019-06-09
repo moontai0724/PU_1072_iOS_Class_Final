@@ -17,6 +17,8 @@
 		3C77280722ABAB08006CA979 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C77280522ABAB08006CA979 /* User+CoreDataProperties.swift */; };
 		3C77280A22AC0D35006CA979 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C77280822AC0D35006CA979 /* History+CoreDataClass.swift */; };
 		3C77280B22AC0D35006CA979 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C77280922AC0D35006CA979 /* History+CoreDataProperties.swift */; };
+		5683B3E822AD467900F4902B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683B3E722AD467900F4902B /* RegisterViewController.swift */; };
+		5683B3EA22AD4D2400F4902B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683B3E922AD4D2400F4902B /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		3C77280522ABAB08006CA979 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C77280822AC0D35006CA979 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C77280922AC0D35006CA979 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5683B3E722AD467900F4902B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5683B3E922AD4D2400F4902B /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +73,14 @@
 			isa = PBXGroup;
 			children = (
 				3C7727E522AB1E46006CA979 /* AppDelegate.swift */,
+				5683B3E922AD4D2400F4902B /* Database.swift */,
 				3C7727E722AB1E46006CA979 /* ViewController.swift */,
 				3C7727E922AB1E46006CA979 /* Main.storyboard */,
 				3C7727EF22AB1E46006CA979 /* Assets.xcassets */,
 				3C7727F122AB1E46006CA979 /* LaunchScreen.storyboard */,
 				3C7727F422AB1E46006CA979 /* Info.plist */,
 				3C7727EC22AB1E46006CA979 /* UnKnownHand.xcdatamodeld */,
+				5683B3E722AD467900F4902B /* RegisterViewController.swift */,
 			);
 			path = UnKnownHand;
 			sourceTree = "<group>";
@@ -154,8 +160,10 @@
 				3C77280B22AC0D35006CA979 /* History+CoreDataProperties.swift in Sources */,
 				3C7727E822AB1E46006CA979 /* ViewController.swift in Sources */,
 				3C77280622ABAB08006CA979 /* User+CoreDataClass.swift in Sources */,
+				5683B3E822AD467900F4902B /* RegisterViewController.swift in Sources */,
 				3C77280722ABAB08006CA979 /* User+CoreDataProperties.swift in Sources */,
 				3C7727E622AB1E46006CA979 /* AppDelegate.swift in Sources */,
+				5683B3EA22AD4D2400F4902B /* Database.swift in Sources */,
 				3C77280A22AC0D35006CA979 /* History+CoreDataClass.swift in Sources */,
 				3C7727EE22AB1E46006CA979 /* UnKnownHand.xcdatamodeld in Sources */,
 			);
@@ -319,6 +327,7 @@
 				3C7727F922AB1E46006CA979 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
