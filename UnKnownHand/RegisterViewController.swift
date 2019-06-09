@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var msg: UILabel!
     @IBOutlet weak var account: UITextField!
     @IBOutlet weak var passwd: UITextField!
     @IBOutlet weak var passwd_check: UITextField!
@@ -19,18 +20,17 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func register_btn(_ sender: Any) {
-        var Account:String? = nil
-        var Password:String? = nil
-        Account = account.text!;
-        Password = passwd.text!;
         var database : Database!
-        if(Account != nil && Password != nil && passwd_check != nil) {
-            if(Password == passwd_check.text!) {
-                database.Register(Account: Account, Password: Password)
+        if(account.text! != nil && passwd.text! != nil && passwd_check != nil) {
+            if(passwd.text! == passwd_check.text!) {
+                
+            }else{
+                msg.text = "密碼確認錯誤"
             }
+        }else{
+            msg.text = "欄位不可留白"
         }
     }
-    
 
     /*
     // MARK: - Navigation
