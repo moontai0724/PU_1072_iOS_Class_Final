@@ -20,11 +20,15 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func register_btn(_ sender: Any) {
-        var database : Database!
-        if(account.text! != nil && passwd.text! != nil && passwd_check != nil) {
+        
+        if(account.text! != "" && passwd.text! != "" && passwd_check.text! != "") {
             if(passwd.text! == passwd_check.text!) {
-                
-            }else{
+                if(Database().register(account: account.text!, password: passwd.text!)) {
+                    print(true);
+                } else {
+                    print(false);
+                }
+            } else {
                 msg.text = "密碼確認錯誤"
             }
         }else{
