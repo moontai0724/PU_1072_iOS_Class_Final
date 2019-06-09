@@ -15,8 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginbtn: UIButton!
     @IBOutlet weak var registerbtn: UIButton!
     @IBOutlet weak var info: UILabel!
-    let acc = "test"
-    let passwd = "test"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +25,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        if account.text == acc && password.text == passwd{
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+        if Database().login(account: account.text!, password: password.text!){
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeView")
             
-            self.performSegue(withIdentifier: "login", sender: self)
+            present(viewController, animated: true, completion: nil)
         }else{
             self.info.text = "帳號或密碼錯誤！"
         }

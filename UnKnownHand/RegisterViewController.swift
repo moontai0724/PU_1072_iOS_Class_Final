@@ -24,9 +24,12 @@ class RegisterViewController: UIViewController {
         if(account.text! != "" && passwd.text! != "" && passwd_check.text! != "") {
             if(passwd.text! == passwd_check.text!) {
                 if(Database().register(account: account.text!, password: passwd.text!)) {
-                    print(true);
+                    let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView")
+                    
+                    // self.performSegue(withIdentifier: "login", sender: self)
+                    present(viewController, animated: true, completion: nil)
                 } else {
-                    print(false);
+                    msg.text = "註冊失敗"
                 }
             } else {
                 msg.text = "密碼確認錯誤"

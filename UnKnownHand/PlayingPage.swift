@@ -19,7 +19,7 @@ class PlayingPage: UIViewController {
     
     @IBOutlet weak var result: UILabel!
     let main = ViewController()
-    let imaArr = [#imageLiteral(resourceName: "sss.jpg"),#imageLiteral(resourceName: "images.jpg"),#imageLiteral(resourceName: "ima.jpg") ]
+    let imaArr = [#imageLiteral(resourceName: "sss.jpg"),#imageLiteral(resourceName: "ima.jpg"),#imageLiteral(resourceName: "images.jpg") ]
     var data = Array<Int>()
     var bounds: CGRect = CGRect.zero
     override func viewDidLoad() {
