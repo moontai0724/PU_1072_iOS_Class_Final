@@ -11,46 +11,50 @@ import UIKit
 class PlayViewController: UIViewController, UIPickerViewDelegate , UIPickerViewDataSource {
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var resultLabel: UILabel!
-
+    var data = Array<Int>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for _ in 0...100{
+            self.data.append((Int)(arc4random() % 3))
+        }
     }
     
     @IBAction func Paper(_ sender: AnyObject) {
-        let index:Int = Int(arc4random() % 3)
+        let index:Int = Int(arc4random() % UInt32(data.count))
         
         pickerView.selectRow(index, inComponent: 0, animated: true)
-
+        
         var result: String = ""
-
-        if index == 0 {
+        
+        if data[index] == 0 {
             result = "平手"
-        } else if index == 2 {
+        } else if data[index] == 2 {
             result = "獲勝"
-        } else if index == 1 {
+        } else if data[index] == 1 {
             result = "敗北"
         } else {
             alert("錯誤", "未知的 code")
             return
         }
-
+        
         resultLabel.text = result
-        alert("結果", result)
-        Database().addHistory(userPunched: 0, systemPunched: Int16(index), result: result)
+        // alert("結果", result)
+        Database().addHistory(userPunched: 0, systemPunched: Int16(data[index]), result: result)
     }
-
+    
     @IBAction func Scssiors(_ sender: AnyObject) {
-        let index:Int = Int(arc4random() % 3)
-
+        let index:Int = Int(arc4random() % UInt32(data.count))
+        
         pickerView.selectRow(index, inComponent: 0, animated: true)
         
         var result: String = ""
         
-        if index == 1 {
+        if data[index] == 1 {
             result = "平手"
-        } else if index == 0 {
+        } else if data[index] == 0 {
             result = "獲勝"
-        } else if index == 2 {
+        } else if data[index] == 2 {
             result = "敗北"
         } else {
             alert("錯誤", "未知的 code")
@@ -58,22 +62,22 @@ class PlayViewController: UIViewController, UIPickerViewDelegate , UIPickerViewD
         }
         
         resultLabel.text = result
-        alert("結果", result)
-        Database().addHistory(userPunched: 1, systemPunched: Int16(index), result: result)
+        // alert("結果", result)
+        Database().addHistory(userPunched: 1, systemPunched: Int16(data[index]), result: result)
     }
-
+    
     @IBAction func Stone(_ sender: AnyObject) {
-        let index:Int = Int(arc4random() % 3)
+        let index:Int = Int(arc4random() % UInt32(data.count))
         
         pickerView.selectRow(index, inComponent: 0, animated: true)
         
         var result: String = ""
         
-        if index == 2 {
+        if data[index] == 2 {
             result = "平手"
-        } else if index == 1 {
+        } else if data[index] == 1 {
             result = "獲勝"
-        } else if index == 0 {
+        } else if data[index] == 0 {
             result = "敗北"
         } else {
             alert("錯誤", "未知的 code")
@@ -81,10 +85,10 @@ class PlayViewController: UIViewController, UIPickerViewDelegate , UIPickerViewD
         }
         
         resultLabel.text = result
-        alert("結果", result)
-        Database().addHistory(userPunched: 2, systemPunched: Int16(index), result: result)
+        // alert("結果", result)
+        Database().addHistory(userPunched: 2, systemPunched: Int16(data[index]), result: result)
     }
-
+    
     @IBAction func history(_ sender: Any) {
         let history: UIViewController = UIStoryboard(name: "History", bundle: nil).instantiateViewController(withIdentifier: "History")
         navigationController?.pushViewController(history, animated: true)
@@ -98,7 +102,7 @@ class PlayViewController: UIViewController, UIPickerViewDelegate , UIPickerViewD
             alert("錯誤", "登出時發生錯誤")
         }
     }
-
+    
     func alert(_ title: String, _ message: String) {
         // Declare Alert message
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert);
@@ -116,9 +120,9 @@ class PlayViewController: UIViewController, UIPickerViewDelegate , UIPickerViewD
 
 extension PlayViewController {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return data.count
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -131,12 +135,11 @@ extension PlayViewController {
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 155.0
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let punchType = ["paper", "scissors", "stone"];
         let imageView = UIImageView()
-        imageView.image = UIImage(named: punchType[row])
+        imageView.image = UIImage(named: punchType[data[row]])
         return imageView
     }
 }
-
