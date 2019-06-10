@@ -16,7 +16,9 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        account.clearButtonMode = .whileEditing
+        password.clearButtonMode = .whileEditing
+        password_check.clearButtonMode = .whileEditing
         // Do any additional setup after loading the view.
     }
 
@@ -24,7 +26,7 @@ class RegisterViewController: UIViewController {
         if(account.text! != "" && password.text! != "" && password_check.text! != "") {
             if(password.text! == password_check.text!) {
                 if(Database().register(account: account.text!, password: password.text!)) {
-                    dismiss(animated: true, completion: nil)
+                    successAlert("註冊成功")
                 } else {
                     errorAlert("註冊失敗")
                 }
@@ -39,7 +41,27 @@ class RegisterViewController: UIViewController {
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view?.endEditing(true)
+    }
+    
+    func successAlert(_ message: String) {
+        // Declare Alert message
+        let dialogMessage = UIAlertController(title: "成功", message: message, preferredStyle: .alert);
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "確認", style: .default) { (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok);
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil);
+    }
+    
     func errorAlert(_ message: String) {
         // Declare Alert message
         let dialogMessage = UIAlertController(title: "錯誤", message: message, preferredStyle: .alert);

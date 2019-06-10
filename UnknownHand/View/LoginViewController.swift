@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loginBtn.layer.cornerRadius = 10
         registerBtn.layer.cornerRadius = 10
+        account.clearButtonMode = .whileEditing
+        password.clearButtonMode = .whileEditing
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +43,10 @@ class LoginViewController: UIViewController {
         } else {
             errorAlert("帳號或密碼錯誤！")
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view?.endEditing(true)
     }
 
     func errorAlert(_ message: String) {
